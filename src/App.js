@@ -1,15 +1,14 @@
-import logo from './logo.svg';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import ProductList from './components/ProductList';
-import HomeScreen from './components/HomeScreen';
-import { useState } from 'react';
+import { RouterSwitch } from './routes/RouterSwitch';
 
 function App() {
   
-  
   return (
     <div className="App">
-      <HomeScreen />
+      <BrowserRouter>
+        <RouterSwitch />
+      </BrowserRouter>
     </div>
   );
 }
