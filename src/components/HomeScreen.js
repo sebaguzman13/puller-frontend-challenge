@@ -1,25 +1,15 @@
 import { useEffect, useState } from 'react';
 import SearchComponent from "./SearchComponent";
-import ProductList from "./ProductList";
 import FooterMenu from "./FooterMenu";
+import { fetchCategories } from '../service/productServices';
 
 export const HomeScreen = () => {
     const [categories, setCategories] = useState([]);
     const [filters, setFilters] = useState({name: "", categories: []})
 
     useEffect(() => {
-        let fetchedCategories = localStorage.getItem("c");
-        if (fetchedCategories !== null) {
-            setCategories(fetchedCategories);
-        } else {
-            fetch('https://fakestoreapi.com/products/categories')
-                .then(res=>res.json())
-                .then(json=>{
-                    localStorage.setItem("c", json)
-                    setCategories(json);
-                })
-        }
-    })
+        fetchCategories().then(res => setCategories(res))
+    }, [])
 
     const updateFilters = (filters) => {
         setFilters(filters);
@@ -29,7 +19,9 @@ export const HomeScreen = () => {
         <>
             <SearchComponent categories={categories} setFilters={updateFilters}/>
             <main>
-                <ProductList filters={filters}/>
+                This is the Home Page of our Marketing application.
+                To see all the available products click on the footer menu option: "P".
+                To add a new Product to the inventory go to option "F".
             </main>
             <FooterMenu />
         </>

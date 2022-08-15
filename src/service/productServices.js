@@ -20,15 +20,15 @@ export const createProduct = async (product) => {
         method: "POST",
         body: product
     })
-    .then(res => res.json())
-    .then(json => {
-        
-        // TODO handle id incremental to simulate real backend comunication
-        json.id = products.forEach(element => {
+        .then(res => res.json())
+        .then(json => {
 
-        });
-        localStorage.setItem(storageKeys.PRODUCTS, JSON.stringify(products));
-    })
+            // TODO handle id incremental to simulate real backend comunication
+            json.id = products.forEach(element => {
+
+            });
+            localStorage.setItem(storageKeys.PRODUCTS, JSON.stringify(products));
+        })
 }
 // edit Product
 export const updateProduct = async (updatedProduct) => {
@@ -60,10 +60,14 @@ export const deleteProduct = async (productId) => {
 }
 // fetch categories
 export const fetchCategories = async () => {
-    let categories = localStorage.getItem(storageKeys.CATEGORIES);
+    let categories = JSON.parse(localStorage.getItem(storageKeys.CATEGORIES));
     if (categories === null) {
-        categories = await fetch('https://fakestoreapi.com/products/categories').json()
-        localStorage.setItem(storageKeys.CATEGORIES, JSON.stringify(categories));
+        fetch('https://fakestoreapi.com/products/categories')
+            .then(res => res.json())
+            .then(res => {
+                localStorage.setItem(storageKeys.CATEGORIES, JSON.stringify(res));
+                categories = res;
+            })
     }
-    return categories
+    return categories;
 }

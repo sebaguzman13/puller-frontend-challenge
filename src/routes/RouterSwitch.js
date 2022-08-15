@@ -10,7 +10,7 @@ export const RouterSwitch = () => {
         <Routes>
             <Route path='/' element={<HomeScreen />}/>
             <Route path='/products' element={<HomeScreen />} />
-            <Route path='/product/{id}' element={<ProductDetail />} />
+            <Route path='/product' element={<ProductForm />} />
             <Route path='/product/edit' element={<ProductForm />} />
             <Route path='*' element={<Page404 />} />
         </Routes>
