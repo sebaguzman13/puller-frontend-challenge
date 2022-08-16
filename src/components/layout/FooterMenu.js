@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Routes } from './../routes/Routes';
+import { Routes } from '../../routes/Routes';
 
 export const FooterMenu = () => {
     const navigate = useNavigate();

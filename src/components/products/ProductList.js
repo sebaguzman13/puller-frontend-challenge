@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'react';
-import Loader from './Loader';
-import ProductItem from './ProductItem';
-import './../styles/products.css';
-import ProductDetail from './ProductDetail';
-import { fetchProducts } from '../service/productServices';
-import Layout from './Layout';
+import { fetchProducts } from '../../service/productServices';
 import { useNavigate } from 'react-router-dom';
-import Routes from '../routes/Routes';
+import Loader from './../common/Loader';
+import Layout from './../layout/Layout';
+import ProductItem from './ProductItem';
+import './../../styles/products.css';
 
 export const ProductList = ({ filters }) => {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [fetching, setFetching] = useState(true);
-    const [modal, setModal] = useState(null);
 
     useEffect(() => {
         fetchProducts().then(res => {

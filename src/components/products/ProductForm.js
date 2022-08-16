@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { createProduct, fetchCategories, getProduct, updateProduct } from "../service/productServices";
-import { initialProduct } from "../utils/emptyEntites";
-import Layout from "./Layout";
-import './../styles/product-form.css';
+import { createProduct, fetchCategories, getProduct, updateProduct } from "../../service/productServices";
+import { initialProduct } from "../../utils/emptyEntites";
 import { useNavigate, useParams } from "react-router-dom";
-import Loader from "./Loader";
+import Layout from "./../layout/Layout";
+import Loader from "./../common/Loader";
+import backArrow from './../../assets/arrow.png';
+import './../../styles/product-form.css';
 
 export const ProductForm = ({ product }) => {
     const [fetching, setFetching] = useState(true);
@@ -27,6 +28,10 @@ export const ProductForm = ({ product }) => {
         }
     }, [])
 
+    const handleNavBack = () => {
+        navigate(-1);
+    }
+
     const handleChange = (e) => {
         setProductData({ ...productData, [e.target.name]: e.target.value })
     }
@@ -45,12 +50,13 @@ export const ProductForm = ({ product }) => {
     }
 
     return (
-        <Layout>
+        <Layout freeHeight>
             {fetching ?
                 <Loader />
                 :
                 <article className="product-form">
                     <h1>{formLabel} Product</h1>
+                    <button onClick={handleNavBack} className="nav-back"><img src={backArrow} alt="navigate back" /></button>
                     <form action="" onSubmit={handleSubmit}>
                         <input type="hidden" name="id" value={productData.id} onChange={handleChange} />
 
@@ -74,7 +80,7 @@ export const ProductForm = ({ product }) => {
                         <textarea name="description" value={productData.description} rows="8" onChange={handleChange}></textarea>
 
 
-                        <button type="submit">{formLabel}</button>
+                        <button type="submit" className="edit">{formLabel}</button>
                     </form>
                 </article>}
         </Layout>

@@ -1,9 +1,9 @@
 import FooterMenu from './FooterMenu';
 
-export const Layout = ({ children }) => {
+export const Layout = ({ children, freeHeight }) => {
     return (
         <>
-            <main>
+            <main className={!!freeHeight ? 'free-height' : ''}>
                 {children}
             </main>
             <FooterMenu />

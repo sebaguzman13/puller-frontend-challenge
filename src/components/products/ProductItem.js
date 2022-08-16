@@ -1,4 +1,4 @@
-import Avatar from "./Avatar";
+import Avatar from "./../common/Avatar";
 
 export const ProductItem = ({ item, onClick }) => {
     const handleItemClick = () => {
@@ -6,7 +6,7 @@ export const ProductItem = ({ item, onClick }) => {
     }
 
     return (
-        <article style={{ backgroundImage: `url(${item.image})` }} className="item-card" onClick={handleItemClick} >
+        <article className="item-card" onClick={handleItemClick} >
             <img src={item.image} className="item-image" alt={item.title}/>
             <div className="item-card-info">
                 <Avatar />

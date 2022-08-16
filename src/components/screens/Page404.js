@@ -1,6 +1,6 @@
-import { Routes } from "../routes/Routes"
+import { Routes } from "../../routes/Routes"
 import { Link, useNavigate } from "react-router-dom";
-import Layout from "./Layout";
+import Layout from "./../layout/Layout";
 
 export const Page404 = () => {
     const navigate = useNavigate();

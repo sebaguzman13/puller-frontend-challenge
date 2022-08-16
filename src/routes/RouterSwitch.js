@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import Page404 from '../components/Page404';
-import HomeScreen from '../components/HomeScreen';
-import ProductDetail from '../components/ProductDetail';
-import ProductForm from '../components/ProductForm';
-import ProductsScreen from '../components/ProductsScreen';
+import Page404 from '../components/screens/Page404';
+import HomeScreen from '../components/screens/HomeScreen';
+import ProductDetail from '../components/products/ProductDetail';
+import ProductForm from '../components/products/ProductForm';
+import ProductsScreen from '../components/screens/ProductsScreen';
 import { Routes as AppRoutes } from './Routes';
 
 export const RouterSwitch = () => {

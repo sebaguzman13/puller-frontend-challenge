@@ -1,6 +1,6 @@
 .product-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     justify-items: center;
     padding: 10px;
@@ -8,34 +8,33 @@
 }
 
 .item-card {
-    background-size: cover;
+    width: 45%;
+    display: flex;
+    flex-basis: 48%;
+    flex-flow: column;
+    flex-grow: 1;
     border: 1px solid black;
     border-radius: 20px;
+    box-shadow: 1px 1px 3px lightslategray;
     display: flex;
-    justify-content: center;
-    overflow: hidden;
-    padding-top: 100px;
-    width: 100%;
+    width: inherit;
+    height: fit-content;
 }
 
-.item-wrapper {
-
+.item-card:hover {
+    filter: brightness(1.13);
 }
 
 .item-image {
-    border-radius: 10px;
-    max-width: 100%;
-    overflow-y: hidden;
-}
-
-img.item-image {
-    display: none;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
 }
 
 .item-card-info {
     align-self: flex-end;
     background-color: aliceblue; 
-    padding: 5px;
+    border-radius: 0 0 20px 20px;
+    padding: 0.5rem;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr auto 2fr;
@@ -53,20 +52,4 @@ img.item-image {
 
 .item-price {
     align-self: center;
-}
-
-.item-currency {
-
-}
-
-.item-description {
-
-}
-
-.item-categories {
-
-}
-
-.item-button {
-
 }

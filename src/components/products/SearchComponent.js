@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Toggable } from "./Toggable";
+import { Toggable } from "./../common/Toggable";
 
 export const SearchComponent = ({ categories, setFilters }) => {
     const [searchName, setSearchName] = useState("");

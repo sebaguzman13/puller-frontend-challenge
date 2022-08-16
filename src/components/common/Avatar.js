@@ -1,4 +1,4 @@
-import placeholder from './../assets/circle-person-profile-user-group-people-svgrepo-com.svg';
+import placeholder from './../../assets/circle-person-profile-user-group-people-svgrepo-com.svg';
 
 export const Avatar = ({ imageUrl, userName }) => {
     return (

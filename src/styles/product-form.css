@@ -1,20 +1,25 @@
 .product-form {
+    font-size: 16px;
     padding: 1rem;
 }
 
 .product-form h1 {
     text-align: center;
-    padding: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .product-form form {
     display: flex;
     flex-flow: column;
-    
 }
 
 .product-form form > * {
     margin-top: 1rem;
+}
+
+.product-form form input, .product-form form select {
+    padding: 2px 6px;    
+    font-size: inherit;
 }
 
 .product-form form select[name="category"], .product-form form input[name="price"] {
@@ -23,4 +28,14 @@
 
 .product-form form textarea {
     resize: none;
+    padding: 1ch 2ch;
+    font-size: inherit;
+}
+
+.product-form button.edit {
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding: 1rem 0;
+    text-transform: uppercase;
 }

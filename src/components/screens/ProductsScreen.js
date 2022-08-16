@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import SearchComponent from "./SearchComponent";
-import { fetchCategories } from '../service/productServices';
-import ProductList from './ProductList';
-import Layout from './Layout';
+import { fetchCategories } from '../../service/productServices';
+import SearchComponent from "./../products/SearchComponent";
+import ProductList from './../products/ProductList';
 
 export const ProductsScreen = () => {
     const [categories, setCategories] = useState([]);
