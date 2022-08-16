@@ -4,8 +4,12 @@ import ProductItem from './ProductItem';
 import './../styles/products.css';
 import ProductDetail from './ProductDetail';
 import { fetchProducts } from '../service/productServices';
+import Layout from './Layout';
+import { useNavigate } from 'react-router-dom';
+import Routes from '../routes/Routes';
 
 export const ProductList = ({ filters }) => {
+    const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [fetching, setFetching] = useState(true);
     const [modal, setModal] = useState(null);
@@ -18,21 +22,23 @@ export const ProductList = ({ filters }) => {
     }, [])
 
     const handleClick = (p) => {
-        setModal(<ProductDetail product={p} onClose={setModal} />);
+        navigate(`${p.id}`)
     }
 
     return (
-        <section className='product-list'>
-            {fetching ?
-                <Loader />
-                :
-                <>
-                {products.filter(p => p.title.includes(filters.name) || p.category === filters.category )
-                    .map((p, index) => <ProductItem key={`${p}-${index}`} item={p} onClick={() => handleClick(p)} />)}
-                </>
-            }
-            {modal}
-        </section>
+        <Layout>
+            <section className='product-list'>
+                {fetching ?
+                    <Loader />
+                    :
+                    <>
+                        {products.length > 0 && products.filter(p => !!filters.name ? p.title.toLowerCase().includes(filters.name.toLowerCase()) : true)
+                            .filter(p => filters.categories.length > 0 ? filters.categories.some(c => c === p.category) : true)
+                            .map((p, index) => <ProductItem key={`${p}-${index}`} item={p} onClick={() => handleClick(p)} />)}
+                    </>
+                }
+            </section>
+        </Layout>
     )
 };
 

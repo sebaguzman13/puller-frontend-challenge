@@ -1,3 +1,4 @@
+import { getBiggestId } from "../utils/productUtils";
 import { storageKeys } from "../utils/storageKeys"
 
 // fetch Products
@@ -8,26 +9,31 @@ export const fetchProducts = async () => {
             .then(res => res.json())
             .then(json => {
                 localStorage.setItem(storageKeys.PRODUCTS, JSON.stringify(json))
-                products = JSON.parse(json);
+                products = json;
             })
     }
     return JSON.parse(products);
 }
+
+export const getProduct = async (id) => {
+    return fetchProducts().then(res => res.find(p => p.id == id))
+}
+
 // create Product
 export const createProduct = async (product) => {
     let products = await fetchProducts();
-    fetch('https://fakestoreapi.com/products', {
+    let created;
+    return fetch('https://fakestoreapi.com/products', {
         method: "POST",
         body: product
     })
         .then(res => res.json())
         .then(json => {
-
-            // TODO handle id incremental to simulate real backend comunication
-            json.id = products.forEach(element => {
-
-            });
+            product.id = getBiggestId(products) + 1;
+            created = product;
+            products.push(created);
             localStorage.setItem(storageKeys.PRODUCTS, JSON.stringify(products));
+            return created;
         })
 }
 // edit Product

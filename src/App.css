@@ -4,8 +4,14 @@
   margin: 0;
 }
 
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 'header' 'main' 'footer';
+}
+
 body {
-  /* background-color: rgb(255, 253, 237); */
   background-color: rgb(251 251 251);
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
@@ -13,7 +19,11 @@ body {
 }
 
 header {
+  /* position: fixed;
+  top: 0; */
+  grid-area: header;
   min-height: 60px;
+  background-color: white;
   padding: 10px;
 }
 
@@ -36,23 +46,25 @@ header button.chip.active {
 }
 
 main {
-  overflow-y: overlay;
-  max-height: 70vh;
+  /* padding-top: 80px; */
+  grid-area: main;
+  overflow-y: scroll;
+  max-height: 75vh;
+  /* margin-bottom: 80px; */
 }
 
 footer {
-  background-color: transparent;
+  background-color: white;
   padding: 10px;
   position: fixed;
   bottom: 0;
   width: 100%;
   min-height: 80px;
+  grid-area: footer;
 }
 
 footer .menu-wrapper {
-  /* background-color: rgb(240, 248, 255);
-   */
-   background-color: rgb(176, 218, 241);
+  background-color: rgb(176, 218, 241);
   border-radius: 30px;
   border: 1px solid darkgray;
   height: 100%;

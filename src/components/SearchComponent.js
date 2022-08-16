@@ -4,7 +4,7 @@ import { Toggable } from "./Toggable";
 export const SearchComponent = ({ categories, setFilters }) => {
     const [searchName, setSearchName] = useState("");
     const [categoryFilter, setCategoryFilter] = useState([]);
-
+console.log("Search componente!!")
     const handleChange = (e) => {
         setSearchName(e.target.value);
     }
@@ -14,7 +14,8 @@ export const SearchComponent = ({ categories, setFilters }) => {
         if (index === -1) {
             setCategoryFilter(prevState => [...prevState, value]);
         } else {
-            let updatedCategoryFiter = categoryFilter.splice(index, 1);
+            let updatedCategoryFiter =  [...categoryFilter];
+            updatedCategoryFiter.splice(index, 1);
             setCategoryFilter(updatedCategoryFiter);
         }
     }
@@ -31,16 +32,18 @@ export const SearchComponent = ({ categories, setFilters }) => {
                 value={searchName}
                 onChange={handleChange}
             />
-            {!!categories && categories.map((category, index) =>
-                <Toggable 
-                    key={index}
-                    value={category}
-                    className="chip"
-                    onClick={() => handleCategoryFilter(category)}
-                >
-                    {category}
-                </Toggable>)
-            }
+            <>
+                {!!categories && categories.map((category, index) =>
+                    <Toggable
+                        key={index}
+                        value={category}
+                        className="chip"
+                        onClick={() => handleCategoryFilter(category)}
+                    >
+                        {category}
+                    </Toggable>)
+                }
+            </>
         </header>
     )
 }
