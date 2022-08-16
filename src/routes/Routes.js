@@ -1,8 +1,9 @@
 export const Routes = {
     HOME: "/",
     PRODUCTS: "/products",
-    PRODUCT_DETAIL: "/products/{externalId}",
-    PRODUCT_FORM: "/product",
+    PRODUCT_FORM: "/products/new",
+    PRODUCT_DETAIL: "/products/:id",
+    PRODUCT_EDIT: "/products/:id/edit",
     PAGE_404: "/404"
 }
 
