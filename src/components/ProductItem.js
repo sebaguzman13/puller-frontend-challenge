@@ -1,7 +1,6 @@
 import Avatar from "./Avatar";
 
 export const ProductItem = ({ item, onClick }) => {
-
     const handleItemClick = () => {
         !!onClick && onClick();
     }

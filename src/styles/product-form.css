@@ -1,0 +1,26 @@
+.product-form {
+    padding: 1rem;
+}
+
+.product-form h1 {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.product-form form {
+    display: flex;
+    flex-flow: column;
+    
+}
+
+.product-form form > * {
+    margin-top: 1rem;
+}
+
+.product-form form select[name="category"], .product-form form input[name="price"] {
+
+}
+
+.product-form form textarea {
+    resize: none;
+}
